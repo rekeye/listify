@@ -5,8 +5,7 @@
   "main": "client/index.js",
   "scripts": {
     "start": "node ./index.js",
-    "build": "cd client && npm install && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "Szymon Paluch",

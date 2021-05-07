@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Montserrat:wght@300&display=swap");
+:root {
+  --base-brand-black: #191414;
+  --base-brand-green: #1db954;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: "Cairo", sans-serif;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+/*# sourceMappingURL=main.css.map */

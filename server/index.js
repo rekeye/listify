@@ -1,5 +1,8 @@
-const path = require("path");
+require("dotenv").config();
+
 const express = require("express");
+const path = require("path");
+const SpotifyWebApi = require("spotify-web-api-node");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -8,16 +11,23 @@ const PORT = process.env.PORT || 3001;
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 //login authorization handling
-app.get("/login", (req, res) => {});
+app.get("/login", (req, res) => {
+  const spotifyApi = new SpotifyWebApi({
+    redirectUri: "http://localhost:3000",
+    clientId: "8bab01cec2de40eab277a77d78b87885",
+    clientSecret: process.env.CLIENT_SECRET,
+  });
 
-// All other GET requests not handled before will return our React app
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-});
-
-//error handling
-app.use((err, req, res, next) => {
-  console.error(err);
+  spotifyApi
+    .authorizationCodeGrant(code)
+    .then((data) => {
+      res.json({
+        accessToken: data.body["access_token"],
+        refreshToken: data.body["refresh_token"],
+        expiresIn: data.body["expires_in"],
+      });
+    })
+    .catch(console.log(400));
 });
 
 app.listen(PORT, () => {
