@@ -1,17 +1,20 @@
-require("dotenv").config();
-
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const SpotifyWebApi = require("spotify-web-api-node");
+
+require("dotenv").config({ path: "../.env" });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Have Node serve the files for our built React app
-app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.use(cors());
+app.use(bodyParser.json());
 
 //login authorization handling
-app.get("/login", (req, res) => {
+app.post("/login", (req, res) => {
+  const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
     redirectUri: "http://localhost:3000",
     clientId: "8bab01cec2de40eab277a77d78b87885",
