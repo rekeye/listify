@@ -4,13 +4,18 @@
   "description": "",
   "main": "client/index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node ./index.js",
+    "build": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Szymon Paluch",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "spotify-web-api-node": "^5.0.2"
+  },
+  "engines": {
+    "node": "v14.15.1"
   }
 }
