@@ -9,7 +9,7 @@ const useAuth = (code) => {
   //#region login call
   useEffect(() => {
     axios
-      .post("http://localhost:3001/login", { code })
+      .post("/login", { code })
       .then(({ data: { accessToken, refreshToken, expiresIn } }) => {
         setAccessToken(accessToken);
         setRefreshToken(refreshToken);
@@ -27,7 +27,7 @@ const useAuth = (code) => {
     if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post("http://localhost:3001/refresh", { refreshToken })
+        .post("/refresh", { refreshToken })
         .then(({ data: { accessToken, expiresIn } }) => {
           setAccessToken(accessToken);
           setExpiresIn(expiresIn);
