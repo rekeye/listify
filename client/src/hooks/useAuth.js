@@ -9,13 +9,37 @@ const useAuth = (code) => {
   useEffect(() => {
     axios
       .post("http://localhost:3001/login", { code })
-      .then((res) => {
-        console.log(res.data);
+      .then(({ data: { accessToken, refreshToken, expiresIn } }) => {
+        setAccessToken(accessToken);
+        setRefreshToken(refreshToken);
+        setExpiresIn(expiresIn);
+        window.history.pushState({}, null, "/");
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log("Something went wrong!", err);
         window.location = "/";
       });
-  });
+  }, [code]);
+
+  useEffect(() => {
+    if (!refreshToken || !expiresIn) return;
+    const interval = setInterval(() => {
+      axios
+        .post("http://localhost:3001/refresh", { refreshToken })
+        .then(({ data: { accessToken, expiresIn } }) => {
+          setAccessToken(accessToken);
+          setExpiresIn(expiresIn);
+        })
+        .catch((err) => {
+          console.log("Something went wrong!", err);
+          window.location = "/";
+        });
+    }, (expiresIn - 60) * 1000);
+
+    return () => clearInterval(interval);
+  }, [refreshToken, expiresIn]);
+
+  return accessToken;
 };
 
 export default useAuth;

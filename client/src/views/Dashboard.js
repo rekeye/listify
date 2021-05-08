@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 
 const Dashboard = ({ code }) => {
   const accessToken = useAuth(code);
-  return <div>{code}</div>;
+  return <div>{accessToken}</div>;
 };
 
 export default Dashboard;
