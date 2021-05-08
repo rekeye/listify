@@ -19,7 +19,7 @@ const Content = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const LinkBtn = styled.div`
+const LoginBtn = styled.div`
   border-radius: 1em;
   background: var(--base-dark-green);
   padding: 1em 1.5em;
@@ -31,11 +31,12 @@ const LinkBtn = styled.div`
 const REDIRECT_URL = "http://localhost:3000";
 const CLIENT_ID = "8bab01cec2de40eab277a77d78b87885";
 const scopes =
-  "user-read-email user-read-private user-top-read user-read-recently-played";
+  "user-read-email user-read-private user-top-read user-follow-read";
 
-const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URL}&scopes=${encodeURIComponent(
+const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URL}&scope=${encodeURIComponent(
   scopes
 )}`;
+console.log(AUTH_URL);
 //#endregion
 
 const Login = () => {
@@ -46,7 +47,7 @@ const Login = () => {
         <h1>Listify</h1>
         <p>Create spotify playlists based on your listening taste</p>
         <a href={AUTH_URL}>
-          <LinkBtn>Login with spotify</LinkBtn>
+          <LoginBtn>Login with spotify</LoginBtn>
         </a>
       </Content>
     </MainContainer>
