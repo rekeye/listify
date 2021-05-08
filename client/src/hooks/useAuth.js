@@ -6,6 +6,7 @@ const useAuth = (code) => {
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
 
+  //#region login call
   useEffect(() => {
     axios
       .post("http://localhost:3001/login", { code })
@@ -20,7 +21,9 @@ const useAuth = (code) => {
         window.location = "/";
       });
   }, [code]);
+  //#endregion
 
+  //#region refresh call
   useEffect(() => {
     if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
@@ -38,6 +41,7 @@ const useAuth = (code) => {
 
     return () => clearInterval(interval);
   }, [refreshToken, expiresIn]);
+  //#endregion
 
   return accessToken;
 };

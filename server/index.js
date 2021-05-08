@@ -11,25 +11,19 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-//spotify api initialization
-const spotifyApi = new SpotifyWebApi({
-  redirectUri: "http://localhost:3000",
-  clientId: "8bab01cec2de40eab277a77d78b87885",
-  clientSecret: process.env.CLIENT_SECRET,
-});
-
-//login authorization api
+//#region login authorization api
 app.post("/login", (req, res) => {
   const code = req.body.code;
+
+  const spotifyApi = new SpotifyWebApi({
+    redirectUri: "http://localhost:3000",
+    clientId: "8bab01cec2de40eab277a77d78b87885",
+    clientSecret: process.env.CLIENT_SECRET,
+  });
 
   spotifyApi
     .authorizationCodeGrant(code)
     .then((data) => {
-      //set the access token on the API object to use it in later calls
-      spotifyApi.setAccessToken(data.body["access_token"]);
-      spotifyApi.setRefreshToken(data.body["refresh_token"]);
-
-      //send response to the client
       res.json({
         accessToken: data.body["access_token"],
         refreshToken: data.body["refresh_token"],
@@ -41,17 +35,20 @@ app.post("/login", (req, res) => {
       res.sendStatus(400);
     });
 });
+//#endregion
 
-//refresh authorization api
+//#region refresh authorization api
 app.post("/refresh", (req, res) => {
+  const spotifyApi = new SpotifyWebApi({
+    redirectUri: "http://localhost:3000",
+    clientId: "8bab01cec2de40eab277a77d78b87885",
+    clientSecret: process.env.CLIENT_SECRET,
+    refreshToken: req.body.refreshToken,
+  });
+
   spotifyApi
     .refreshAccessToken()
     .then((data) => {
-      console.log("The access token has been refreshed!");
-
-      //set the new access token on the API object so that it's used in future calls
-      spotifyApi.setAccessToken(data.body["access_token"]);
-
       //send response to the client
       res.json({
         accessToken: data.body["access_token"],
@@ -63,6 +60,7 @@ app.post("/refresh", (req, res) => {
       res.sendStatus(400);
     });
 });
+//#endregion
 
 app.listen(PORT, () => {
   console.log(`server is listening on port - ${PORT}`);
