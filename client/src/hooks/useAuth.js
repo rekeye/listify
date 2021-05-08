@@ -18,7 +18,6 @@ const useAuth = (code) => {
       })
       .catch((err) => {
         console.log("Something went wrong!", err);
-        window.location = "/";
       });
   }, [code]);
   //#endregion
@@ -35,7 +34,6 @@ const useAuth = (code) => {
         })
         .catch((err) => {
           console.log("Something went wrong!", err);
-          window.location = "/";
         });
     }, (expiresIn - 60) * 1000);
 
