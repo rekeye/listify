@@ -5,8 +5,7 @@
   "main": "client/index.js",
   "scripts": {
     "start": "node ./index.js",
-    "devStart": "nodemon ./index.js",
-    "build": "cd client && npm install && npm run build"
+    "devStart": "nodemon ./index.js"
   },
   "keywords": [],
   "author": "Szymon Paluch",
