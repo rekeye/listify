@@ -1,13 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import AnimatedBackground from "../components/AnimatedBackground";
 
 //#region styled components
 const MainContainer = styled.main`
+  background: var(--base-brand-black);
+`;
+const Content = styled.div`
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
-  min-height: 100vh;
 `;
 const LinkBtn = styled.div`
   border-radius: 1em;
@@ -29,11 +34,16 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&
 //#endregion
 
 const Login = () => {
+  document.body.style.overflow = "hidden";
+
   return (
     <MainContainer>
-      <a href={AUTH_URL}>
-        <LinkBtn>Login with spotify</LinkBtn>
-      </a>
+      <AnimatedBackground />
+      <Content>
+        <a href={AUTH_URL}>
+          <LinkBtn>Login with spotify</LinkBtn>
+        </a>
+      </Content>
     </MainContainer>
   );
 };
