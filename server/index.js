@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const SpotifyWebApi = require("spotify-web-api-node");
 
 //env variables
@@ -61,6 +62,12 @@ app.post("/refresh", (req, res) => {
     });
 });
 //#endregion
+
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`server is listening on port - ${PORT}`);
