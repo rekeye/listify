@@ -17,6 +17,9 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  p {
+    margin-bottom: 1em;
+  }
 `;
 const LoginBtn = styled.div`
   border-radius: 1em;
@@ -43,7 +46,9 @@ const Login = () => {
       <AnimatedBackground />
       <Content>
         <h1>Listify</h1>
-        <p>Create spotify playlists based on your listening taste</p>
+        <p style={{ textAlign: "center" }}>
+          Create spotify playlists based on your listening taste
+        </p>
         <a href={AUTH_URL}>
           <LoginBtn>Login with spotify</LoginBtn>
         </a>

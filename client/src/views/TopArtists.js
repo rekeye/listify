@@ -12,6 +12,7 @@ const spotifyApi = new SpotifyWebApi({
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 2em;
 `;
 //#endregion
 
@@ -26,7 +27,7 @@ const TopArtists = ({ code }) => {
     spotifyApi.setAccessToken(accessToken);
 
     spotifyApi
-      .getMyTopArtists()
+      .getMyTopArtists({ limit: 10 })
       .then(({ body: { items } }) => {
         setTopArtists(items);
       })
@@ -40,8 +41,14 @@ const TopArtists = ({ code }) => {
 
   return (
     <Container>
+      <h2>Your Top 10 Artists: </h2>
       {topArtists.map((data, index) => (
-        <Artist data={data} position={index % 2 === 0 ? "left" : "right"} />
+        <Artist
+          data={data}
+          position={index % 2 === 0 ? "left" : "right"}
+          index={index}
+          key={data.name}
+        />
       ))}
     </Container>
   );
