@@ -3,8 +3,7 @@ import styled from "styled-components";
 import AnimatedBackground from "../components/AnimatedBackground";
 
 //#region styled components
-const MainContainer = styled.main`
-  background: var(--base-dark-blue);
+const Container = styled.div`
   width: 100vw;
   position: fixed;
   overflow: hidden;
@@ -36,12 +35,11 @@ const scopes =
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URL}&scope=${encodeURIComponent(
   scopes
 )}`;
-console.log(AUTH_URL);
 //#endregion
 
 const Login = () => {
   return (
-    <MainContainer>
+    <Container>
       <AnimatedBackground />
       <Content>
         <h1>Listify</h1>
@@ -50,7 +48,7 @@ const Login = () => {
           <LoginBtn>Login with spotify</LoginBtn>
         </a>
       </Content>
-    </MainContainer>
+    </Container>
   );
 };
 

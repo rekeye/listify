@@ -1,11 +1,18 @@
 import Login from "./views/Login";
-import Dashboard from "./views/Dashboard";
+import TopArtists from "./views/TopArtists";
+import Layout from "./components/Layout";
 import "./styles/main.css";
 
 const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {
-  return code ? <Dashboard code={code} /> : <Login />; //if code have been returned from authorization render Dashboard otherwise Login
+  return code ? (
+    <Layout>
+      <TopArtists code={code} />
+    </Layout>
+  ) : (
+    <Login />
+  ); //if code have been returned from authorization render Dashboard otherwise Login
 }
 
 export default App;
