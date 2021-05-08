@@ -4,19 +4,24 @@ import AnimatedBackground from "../components/AnimatedBackground";
 
 //#region styled components
 const MainContainer = styled.main`
-  background: var(--base-brand-black);
+  background: var(--base-dark-blue);
+  width: 100vw;
+  position: fixed;
+  overflow: hidden;
 `;
 const Content = styled.div`
+  min-height: 100vh;
+  padding: 1.4em;
   position: relative;
   z-index: 10;
-  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 const LinkBtn = styled.div`
   border-radius: 1em;
-  background: var(--base-brand-green);
+  background: var(--base-dark-green);
   padding: 1em 1.5em;
   font-size: 1.5rem;
 `;
@@ -34,12 +39,12 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&
 //#endregion
 
 const Login = () => {
-  document.body.style.overflow = "hidden";
-
   return (
     <MainContainer>
       <AnimatedBackground />
       <Content>
+        <h1>Listify</h1>
+        <p>Create spotify playlists based on your listening taste</p>
         <a href={AUTH_URL}>
           <LinkBtn>Login with spotify</LinkBtn>
         </a>

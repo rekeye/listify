@@ -8,7 +8,7 @@ const createCSS = (total) => {
   for (let i = 1; i <= total; i++) {
     styles += `
         &:nth-child(${i}) {
-            left: ${Math.random() * (120 - 1) + 1 - 20}%;
+            left: ${Math.random() * (100 - 1) + 1 - 10}%;
             animation: raise-${i} ${6 + Math.random(15)}s linear infinite;
             animation-delay: ${Math.random() * (5 - 1) + 1 - 5}s;
             transform: scale(${0.3 * i - 0.6}) rotate(${
@@ -38,7 +38,7 @@ const Container = styled.div`
   perspective-origin: 50% 50%;
 `;
 const StyledFloatingSvg = styled(FloatingSvg)`
-  stroke: var(--light-brand-green);
+  stroke: var(--base-light-green);
   position: absolute;
   bottom: -100vh;
   transform-style: preserve-3d;

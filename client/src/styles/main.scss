@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Montserrat:wght@300&display=swap");
 
 :root {
-  --base-brand-black: #191414;
-  --base-brand-green: #1db954;
-  --light-brand-green: #2bde6a;
+  --base-light-blue: #68829e;
+  --base-dark-blue: #505160;
+  --base-light-green: #aebd38;
+  --base-dark-green: #598234;
 }
 
 * {
@@ -22,9 +23,18 @@ h6,
 a {
   font-family: "Cairo", sans-serif;
   font-weight: 300;
+  color: white;
+}
+h1 {
+  font-size: 3rem;
+}
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  color: white;
 }
 
 a {
   text-decoration: none;
-  color: white;
 }
