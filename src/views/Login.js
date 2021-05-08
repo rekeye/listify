@@ -30,7 +30,7 @@ const LoginBtn = styled.div`
 //#endregion
 
 //#region auth url definition
-const REDIRECT_URL = "http://localhost:3000";
+const REDIRECT_URL = window.location.href;
 const CLIENT_ID = "8bab01cec2de40eab277a77d78b87885";
 const scopes =
   "user-read-email user-read-private user-top-read user-follow-read";
