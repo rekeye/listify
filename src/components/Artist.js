@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
-import handleViewport from "react-in-viewport";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 
@@ -106,6 +105,4 @@ const Artist = ({
   );
 };
 
-const AnimatedArtist = handleViewport(Artist);
-
-export default AnimatedArtist;
+export default Artist;
