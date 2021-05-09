@@ -12,15 +12,15 @@ const spotifyApi = new SpotifyWebApi({
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  h2 {
+    margin-bottom: 1em;
+  }
 `;
 //#endregion
 
 const TopArtists = ({ code }) => {
   const accessToken = useAuth(code);
   const [topArtists, setTopArtists] = useState([]);
-
-  console.log(accessToken);
 
   //#region api calls
   useEffect(() => {

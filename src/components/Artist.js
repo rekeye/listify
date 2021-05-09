@@ -1,19 +1,37 @@
-import React from "react";
-import styled from "styled-components";
+import { useState, useRef, useEffect } from "react";
+import styled, { css } from "styled-components";
+import handleViewport from "react-in-viewport";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 
 //#region styled components
 const Container = styled.article`
   display: flex;
   flex-direction: ${({ position }) =>
     position === "left" ? "row" : "row-reverse"};
-  gap: 1em;
+  margin-bottom: 2em;
   text-align: ${({ position }) => position};
+  overflow: hidden;
 `;
 const FlexColumn = styled.a`
   width: ${({ width }) => width}px;
   display: flex;
   flex-direction: column;
+`;
+const Image = styled.img`
+  transition: all 0.75s linear;
+  ${({ inView }) =>
+    inView
+      ? css`
+          opacity: 1;
+          transform: translateX(0);
+        `
+      : css`
+          opacity: 0;
+          transform: translateX(
+            ${({ position }) => (position === "left" ? "-100%" : "100%")}
+          );
+        `}
 `;
 const Info = styled.div`
   width: auto;
@@ -44,14 +62,32 @@ const Artist = ({
   position,
   index,
 }) => {
-  const { width } = useWindowDimensions();
+  const [inView, setInView] = useState();
+  const { viewHeight, viewWidth } = useWindowDimensions();
+  const elementRef = useRef(null);
+  const initPos = useRef();
+  //animate image on load
+  useEffect(() => {
+    initPos.current = elementRef.current.getBoundingClientRect();
+    setInView(initPos.current.y < viewHeight);
+  }, [viewHeight]);
 
-  const image = width > 1258 ? images[0] : images[1];
+  //animate images on scroll
+  useScrollPosition(
+    ({ currPos }) => {
+      if (inView) return;
+      setInView(currPos.y < viewHeight);
+    },
+    [inView],
+    elementRef
+  );
+
+  const image = viewWidth > 1258 ? images[0] : images[1];
 
   return (
-    <Container position={position}>
+    <Container position={position} ref={elementRef}>
       <FlexColumn width={image.width} href={href}>
-        <img src={image.url} alt={name} />
+        <Image src={image.url} alt={name} position={position} inView={inView} />
         <Info>
           <h3>{`${index + 1}. ${name}`}</h3>
           <hr />
@@ -70,4 +106,6 @@ const Artist = ({
   );
 };
 
-export default Artist;
+const AnimatedArtist = handleViewport(Artist);
+
+export default AnimatedArtist;
