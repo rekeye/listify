@@ -20,6 +20,8 @@ const TopArtists = ({ code }) => {
   const accessToken = useAuth(code);
   const [topArtists, setTopArtists] = useState([]);
 
+  console.log(accessToken);
+
   //#region api calls
   useEffect(() => {
     if (!accessToken) return;
