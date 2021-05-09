@@ -67,7 +67,7 @@ app.post("/refresh", (req, res) => {
 //#endregion
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
 });
 
 app.listen(PORT, () => {
