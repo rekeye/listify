@@ -20,6 +20,11 @@ Back-end handled by [Node.js](https://github.com/nodejs)
 
 ### Express
 
+For better optymalization [Express](https://github.com/expressjs/express)
+
+### Use scroll position hook
+Use scroll position hook used for animations on top animations site. [Documentation](https://github.com/n8tb1t/use-scroll-position)
+
 ## 💫 Dostęp
 
 Site is available on Heroku:
