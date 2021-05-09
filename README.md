@@ -6,8 +6,7 @@ This project is an attempot on creting a spotify playlist creator and modifier
 
 ## Stack
 
-### React.js <img align="left" alt="React" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />
-
+### React.js
 Client side rendering handled by [React](https://reactjs.org/). Initial template has been bootstrapped by [Create React App](https://github.com/facebook/create-react-app).
 
 ### Spotify Web Api
@@ -15,7 +14,7 @@ Client side rendering handled by [React](https://reactjs.org/). Initial template
 Based on simple REST principles, the Spotify Web API endpoints return JSON metadata about music artists, albums, and tracks, directly from the Spotify Data Catalogue. For more context checkout [official spotify api docs](https://developer.spotify.com/documentation/web-api/).
 For ease of use this project uses [Spotify Web API Node](https://github.com/thelinmichael/spotify-web-api-node)
 
-### Node.js <img align="left" alt="Node" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/node/node.png" />
+### Node.js
 
 Back-end handled by [Node.js](https://github.com/nodejs)
 
