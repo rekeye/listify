@@ -2,7 +2,7 @@
 
 ## About project
 
-This project is an attempot on creting a spotify playlist creator and modifier
+This project is an attempt on creating a spotify playlist creator and modifier
 
 ## Stack
 
