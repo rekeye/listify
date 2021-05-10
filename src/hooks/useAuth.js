@@ -8,6 +8,8 @@ const useAuth = (code) => {
 
   //#region login call
   useEffect(() => {
+    if (!code) return;
+
     axios
       .post("/login", { code })
       .then(({ data: { accessToken, refreshToken, expiresIn } }) => {
