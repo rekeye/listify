@@ -8,6 +8,7 @@ import useAuth from "./hooks/useAuth";
 import "./styles/main.css";
 
 const Container = styled.main`
+  margin-top: 7rem;
   padding: 2em 5vw;
   @media (min-width: 768px) {
     padding: 2em 15vw;
