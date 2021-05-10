@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
@@ -56,7 +56,7 @@ const Artist = ({
     name,
     followers: { total: follows },
     genres,
-    href,
+    external_urls: { spotify: href },
   },
   position,
   index,
