@@ -22,7 +22,6 @@ const Content = styled.div`
   }
 `;
 const LoginBtn = styled.div`
-  border-radius: 1em;
   background: var(--base-dark-green);
   padding: 1em 1.5em;
   font-size: 1.5rem;
