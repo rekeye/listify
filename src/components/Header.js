@@ -21,6 +21,9 @@ const FlexDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: 768px) {
+    width: auto;
+  }
 `;
 const Hamburger = styled.button`
   background: transparent;
