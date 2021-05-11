@@ -11,7 +11,7 @@ const Container = styled.article`
   margin-bottom: 0.5em;
   @media (max-width: 768px) {
     h3 {
-      font-size: 1.75rem;
+      font-size: 1.7rem;
     }
   }
 `;
@@ -30,7 +30,7 @@ const LinkBtn = styled.div`
   background: var(--base-dark-green);
   padding: 0.5em;
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     display: flex;
     align-items: center;
   }

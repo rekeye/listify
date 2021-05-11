@@ -50,7 +50,7 @@ const Dashboard = ({ accessToken }) => {
         ))}
 
         <a href='/top-artists'>
-          <LinkBtn>Check out more of your top artists</LinkBtn>
+          <LinkBtn>Check out more</LinkBtn>
         </a>
       </section>
     </>
