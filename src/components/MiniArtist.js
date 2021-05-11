@@ -11,7 +11,7 @@ const Container = styled.article`
   margin-bottom: 0.5em;
   @media (max-width: 768px) {
     h3 {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
   }
 `;
