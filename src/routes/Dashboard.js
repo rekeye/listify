@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import SpotifyWebApi from "spotify-web-api-node";
+import MiniArtist from "../components/MiniArtist";
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "8bab01cec2de40eab277a77d78b87885",
 });
 
+const LinkBtn = styled.div`
+  background: var(--base-dark-green);
+  padding: 0.5em;
+  margin: 0.5em 0;
+  text-align: center;
+  font-size: 1.4rem;
+`;
+
 const Dashboard = ({ accessToken }) => {
-  const [topArtists, setTopArtists] = useState([]);
+  const [topArtistsMini, setTopArtistsMini] = useState([]);
 
   //#region api calls
   useEffect(() => {
@@ -17,7 +27,7 @@ const Dashboard = ({ accessToken }) => {
     spotifyApi
       .getMyTopArtists({ limit: 3 })
       .then(({ body: { items } }) => {
-        setTopArtists(items);
+        setTopArtistsMini(items);
       })
       .catch((err) => {
         console.log("Something went wrong!", err);
@@ -25,12 +35,25 @@ const Dashboard = ({ accessToken }) => {
   }, [accessToken]);
   //#endregion
 
-  if (topArtists.length > 0) console.log(topArtists);
-
   return (
-    <div>
-      <a href='/top-artists'>top artists</a>
-    </div>
+    <>
+      <section>
+        <h2>Your Top 3 artists:</h2>
+
+        {topArtistsMini.map((data, index) => (
+          <MiniArtist
+            data={data}
+            position={index % 2 === 0 ? "left" : "right"}
+            index={index}
+            key={data.name}
+          />
+        ))}
+
+        <a href='/top-artists'>
+          <LinkBtn>Check out more of your top artists</LinkBtn>
+        </a>
+      </section>
+    </>
   );
 };
 

@@ -1,16 +1,40 @@
 import React from "react";
-import SpotifyLogo from "../assets/64px-Spotify_logo_without_text.svg";
+import { ReactComponent as SpotifyLogo } from "../assets/spotify-logo.svg";
 import styled from "styled-components";
 
 //#region styled components
 const Container = styled.article`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 0.5em;
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 1.75rem;
+    }
+  }
 `;
-const Image = styled.img``;
-const Info = styled.div``;
-const Button = styled.div``;
+const FlexDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const Image = styled.img`
+  margin-right: 2em;
+  width: 25%;
+  @media (min-width: 768px) {
+    width: auto;
+  }
+`;
+const LinkBtn = styled.div`
+  background: var(--base-dark-green);
+  padding: 0.5em;
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
+`;
 //#endregion
 
 const MiniArtist = ({
@@ -22,22 +46,17 @@ const MiniArtist = ({
   },
   index,
 }) => (
-  <Container>
-    <Image src={images[2].url} alt={name} />
-    <Info>
-      <h3>{`${index + 1}. ${name}`}</h3>
-      <p>
-        {`Genres: ${genres.map(
-          (genre) => ` ${genre.charAt(0).toUpperCase() + genre.slice(1)}`
-        )}`}
-      </p>
-    </Info>
-    <a href={href}>
-      <Button>
+  <a href={href}>
+    <Container>
+      <FlexDiv>
+        <Image src={images[2].url} alt={name} />
+        <h3>{`${index + 1}. ${name}`}</h3>
+      </FlexDiv>
+      <LinkBtn>
         <SpotifyLogo />
-      </Button>
-    </a>
-  </Container>
+      </LinkBtn>
+    </Container>
+  </a>
 );
 
 export default MiniArtist;

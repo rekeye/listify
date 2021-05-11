@@ -8,7 +8,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 //#region styled components
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   flex-direction: column;
   h2 {
@@ -36,8 +36,6 @@ const TopArtists = ({ accessToken }) => {
       });
   }, [accessToken]);
   //#endregion
-
-  if (topArtists.length > 0) console.log(topArtists);
 
   return (
     <Container>

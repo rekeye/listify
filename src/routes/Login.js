@@ -3,7 +3,7 @@ import styled from "styled-components";
 import AnimatedBackground from "../components/AnimatedBackground";
 
 //#region styled components
-const Container = styled.div`
+const Container = styled.section`
   width: 100vw;
   position: fixed;
   overflow: hidden;
