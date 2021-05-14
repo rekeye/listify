@@ -51,9 +51,6 @@ const Dashboard = ({ accessToken }) => {
   const [playlists, setPlaylists] = useState([]);
   const [topArtistsMini, setTopArtistsMini] = useState([]);
 
-  const userName = currUser.display_name;
-  const userImg = currUser.images[0].url;
-
   //#region api calls
   useEffect(() => {
     if (!accessToken) return;
@@ -93,9 +90,9 @@ const Dashboard = ({ accessToken }) => {
         </header>
 
         <AboutYou>
-          <img src={userImg} alt={userName} />
+          <img src={currUser.images[0].url} alt={currUser.display_name} />
           <figcaption>
-            <p>{userName}</p>
+            <p>{currUser.display_name}</p>
           </figcaption>
         </AboutYou>
       </section>
