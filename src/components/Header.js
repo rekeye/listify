@@ -106,7 +106,7 @@ const Header = () => {
             <LinkBtn>Go back to Dashboard</LinkBtn>
           </a>
         )}
-        <a href='/' onClick={() => localStorage.removeItem("accessToken")}>
+        <a href='/' onClick={() => sessionStorage.removeItem("accessToken")}>
           <LinkBtn>Log out</LinkBtn>
         </a>
       </Nav>

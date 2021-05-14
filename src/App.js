@@ -18,12 +18,8 @@ const Container = styled.main`
 
 const App = () => {
   const code = new URLSearchParams(window.location.search).get("code");
-  const accessToken = useAuth(code) || localStorage.getItem("accessToken");
-  useEffect(() => {
-    localStorage.setItem("accessToken", accessToken);
-
-    return () => localStorage.removeItem(accessToken);
-  }, [accessToken]);
+  const accessToken = useAuth(code) || sessionStorage.getItem("accessToken");
+  sessionStorage.setItem("accessToken", accessToken);
 
   return accessToken ? (
     <>
