@@ -41,7 +41,6 @@ const MiniArtist = ({
   data: {
     images,
     name,
-    genres,
     external_urls: { spotify: href },
   },
   index,

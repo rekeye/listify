@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.footer`
-  padding: 1em 4em;
+  padding: 1em 2em;
 `;
 
 const Footer = () => {

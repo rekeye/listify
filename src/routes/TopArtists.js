@@ -39,7 +39,9 @@ const TopArtists = ({ accessToken }) => {
 
   return (
     <Container>
-      <h2>Your Top 10 Artists: </h2>
+      <header>
+        <h2>Your Top 10 Artists: </h2>
+      </header>
       {topArtists.map((data, index) => (
         <Artist
           data={data}

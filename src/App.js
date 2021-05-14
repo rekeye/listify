@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,9 +8,10 @@ import useAuth from "./hooks/useAuth";
 import "./styles/main.css";
 
 const Container = styled.main`
-  margin-top: 7rem;
-  padding: 2em 5vw;
+  margin-top: 8.5rem;
+  padding: 0 5vw;
   @media (min-width: 768px) {
+    margin-top: 4.5rem;
     padding: 2em 15vw;
   }
 `;
@@ -18,7 +19,11 @@ const Container = styled.main`
 const App = () => {
   const code = new URLSearchParams(window.location.search).get("code");
   const accessToken = useAuth(code) || localStorage.getItem("accessToken");
-  localStorage.setItem("accessToken", accessToken);
+  useEffect(() => {
+    localStorage.setItem("accessToken", accessToken);
+
+    return () => localStorage.removeItem(accessToken);
+  }, [accessToken]);
 
   return accessToken ? (
     <>
