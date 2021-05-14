@@ -35,10 +35,13 @@ const AboutYou = styled.figure`
   height: 8rem;
   display: flex;
   align-items: center;
-  background: var(--base-light-blue);
+  border: 4px solid var(--base-light-blue);
   p {
     margin-left: 2em;
-    font-size: 1.8rem;
+    font-size: 1.25rem;
+    @media (min-width: 768px) {
+      font-size: 1.8rem;
+    }
   }
 `;
 //#endregion
