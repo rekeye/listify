@@ -47,7 +47,10 @@ const AboutYou = styled.figure`
 //#endregion
 
 const Dashboard = ({ accessToken }) => {
-  const [currUser, setCurrUser] = useState({});
+  const [currUser, setCurrUser] = useState({
+    display_name: "",
+    images: [{ url: "" }],
+  });
   const [playlists, setPlaylists] = useState([]);
   const [topArtistsMini, setTopArtistsMini] = useState([]);
 
