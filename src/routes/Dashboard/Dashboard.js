@@ -60,7 +60,14 @@ const Dashboard = ({ accessToken }) => {
         </header>
 
         <AboutYou>
-          <img src={currUser.images[0].url} alt={currUser.display_name} />
+          <img
+            src={
+              currUser.images.length > 0
+                ? currUser.images[0].url
+                : "../../images/blank-profile-pic.png"
+            }
+            alt={currUser.display_name}
+          />
           <figcaption>
             <p>{currUser.display_name}</p>
           </figcaption>
