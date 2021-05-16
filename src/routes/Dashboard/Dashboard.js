@@ -18,9 +18,6 @@ const Dashboard = ({ accessToken }) => {
   const [playlists, setPlaylists] = useState([]);
   const [topArtistsMini, setTopArtistsMini] = useState([]);
 
-  console.log(accessToken);
-  console.log(currUser);
-
   //#region api calls
   useEffect(() => {
     if (accessToken === null) return;
