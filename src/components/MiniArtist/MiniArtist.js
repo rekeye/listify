@@ -35,4 +35,13 @@ MiniArtist.propTypes = {
   index: PropTypes.number,
 };
 
+MiniArtist.defaultProps = {
+  data: {
+    images: [{ url: "" }],
+    name: "",
+    external_urls: { spotify: "" },
+  },
+  index: 0,
+};
+
 export default MiniArtist;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import SpotifyWebApi from "spotify-web-api-node";
 import { Container } from "./TopArtists.styles";
 import Artist from "../../components/Artist/Artist";
@@ -12,7 +13,7 @@ const TopArtists = ({ accessToken }) => {
 
   //#region api calls
   useEffect(() => {
-    if (!accessToken) return;
+    if (accessToken === "") return;
 
     spotifyApi.setAccessToken(accessToken);
 
@@ -42,6 +43,14 @@ const TopArtists = ({ accessToken }) => {
       ))}
     </Container>
   );
+};
+
+TopArtists.propTypes = {
+  accessToken: PropTypes.string,
+};
+
+TopArtists.defaultProps = {
+  accessToken: "",
 };
 
 export default TopArtists;

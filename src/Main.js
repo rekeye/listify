@@ -19,4 +19,8 @@ Main.propTypes = {
   accessToken: PropTypes.string,
 };
 
+Main.defaultProps = {
+  accessToken: "",
+};
+
 export default Main;

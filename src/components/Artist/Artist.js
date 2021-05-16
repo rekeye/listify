@@ -76,4 +76,18 @@ Artist.propTypes = {
   index: PropTypes.number,
 };
 
+Artist.defaultProps = {
+  data: {
+    images: [{ url: "" }],
+    name: "",
+    followers: {
+      total: 0,
+    },
+    genres: [""],
+    external_urls: { spotify: "" },
+  },
+  position: "",
+  index: 0,
+};
+
 export default Artist;

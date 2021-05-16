@@ -23,7 +23,7 @@ const Dashboard = ({ accessToken }) => {
 
   //#region api calls
   useEffect(() => {
-    if (!accessToken) return;
+    if (accessToken === "") return;
 
     spotifyApi.setAccessToken(accessToken);
 
@@ -104,6 +104,10 @@ const Dashboard = ({ accessToken }) => {
 
 Dashboard.propTypes = {
   accessToken: PropTypes.string,
+};
+
+Dashboard.defaultProps = {
+  accessToken: "",
 };
 
 export default Dashboard;
