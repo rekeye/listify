@@ -13,7 +13,7 @@ const TopArtists = ({ accessToken }) => {
 
   //#region api calls
   useEffect(() => {
-    if (accessToken === "") return;
+    if (accessToken.length === 0) return;
 
     spotifyApi.setAccessToken(accessToken);
 

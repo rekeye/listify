@@ -21,9 +21,12 @@ const Dashboard = ({ accessToken }) => {
   const userName = currUser.display_name;
   const userImg = currUser.images[0].url;
 
+  console.log(accessToken);
+  console.log(currUser);
+
   //#region api calls
   useEffect(() => {
-    if (accessToken === "") return;
+    if (accessToken === null) return;
 
     spotifyApi.setAccessToken(accessToken);
 
