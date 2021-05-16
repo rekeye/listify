@@ -1,9 +1,6 @@
-import React, { useState } from "react";
 import styled from "styled-components";
-import getCurrentRelativeURL from "../hooks/getCurrentRelativePath";
 
-//#region styled components
-const Container = styled.header`
+export const Container = styled.header`
   background: var(--base-light-blue);
   padding: 0 2em;
   position: fixed;
@@ -16,7 +13,7 @@ const Container = styled.header`
     justify-content: space-between;
   }
 `;
-const FlexDiv = styled.div`
+export const FlexDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -25,7 +22,7 @@ const FlexDiv = styled.div`
     width: auto;
   }
 `;
-const Hamburger = styled.button`
+export const Hamburger = styled.button`
   background: transparent;
   border: 0;
   padding: 0;
@@ -60,7 +57,7 @@ const Hamburger = styled.button`
     }
   }
 `;
-const Nav = styled.nav`
+export const Nav = styled.nav`
   display: ${({ open }) => (open ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
@@ -74,44 +71,9 @@ const Nav = styled.nav`
     width: auto;
   }
 `;
-const LinkBtn = styled.div`
+export const LinkBtn = styled.div`
   background: var(--base-dark-green);
   padding: 0.5em 1em;
   margin: 0.85em 0.5em;
   font-size: 1.4rem;
 `;
-//#endregion
-
-const Header = () => {
-  const [nav, setNav] = useState(false);
-
-  const currRelativeURL = getCurrentRelativeURL();
-
-  return (
-    <Container>
-      <FlexDiv>
-        <a href='/'>
-          <h1>Listify</h1>
-        </a>
-        <Hamburger open={nav} onClick={() => setNav(!nav)}>
-          <div />
-          <div />
-          <div />
-        </Hamburger>
-      </FlexDiv>
-
-      <Nav open={nav}>
-        {currRelativeURL !== "/" && (
-          <a href='/'>
-            <LinkBtn>Go back to Dashboard</LinkBtn>
-          </a>
-        )}
-        <a href='/' onClick={() => sessionStorage.removeItem("accessToken")}>
-          <LinkBtn>Log out</LinkBtn>
-        </a>
-      </Nav>
-    </Container>
-  );
-};
-
-export default Header;

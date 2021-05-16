@@ -1,54 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled, { css } from "styled-components";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import PropTypes from "prop-types";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
-
-//#region styled components
-const Container = styled.article`
-  display: flex;
-  flex-direction: ${({ position }) =>
-    position === "left" ? "row" : "row-reverse"};
-  margin-bottom: 2em;
-  text-align: ${({ position }) => position};
-  overflow: hidden;
-`;
-const FlexColumn = styled.a`
-  width: ${({ width }) => width}px;
-  display: flex;
-  flex-direction: column;
-`;
-const Image = styled.img`
-  transition: all 0.75s linear;
-  ${({ inView }) =>
-    inView
-      ? css`
-          opacity: 1;
-          transform: translateX(0);
-        `
-      : css`
-          opacity: 0;
-          transform: translateX(
-            ${({ position }) => (position === "left" ? "-100%" : "100%")}
-          );
-        `}
-`;
-const Info = styled.div`
-  width: auto;
-  font-size: 1.2rem;
-  p {
-    margin: 0.5em;
-  }
-`;
-const Button = styled.div`
-  background: var(--base-dark-green);
-  text-align: center;
-  padding: 1em 0;
-  margin-top: 0.5em;
-  p {
-    font-size: 1.6rem;
-  }
-`;
-//#endregion
+import { Container, FlexColumn, Image, Info, Button } from "./Artist.styles";
 
 const Artist = ({
   data: {
@@ -65,6 +19,7 @@ const Artist = ({
   const { viewHeight, viewWidth } = useWindowDimensions();
   const elementRef = useRef(null);
   const initPos = useRef();
+
   //animate image on load
   useEffect(() => {
     initPos.current = elementRef.current.getBoundingClientRect();
@@ -103,6 +58,22 @@ const Artist = ({
       </FlexColumn>
     </Container>
   );
+};
+
+Artist.propTypes = {
+  data: PropTypes.shape({
+    images: PropTypes.arrayOf(PropTypes.object),
+    name: PropTypes.string,
+    followers: PropTypes.shape({
+      total: PropTypes.number,
+    }),
+    genres: PropTypes.arrayOf(PropTypes.string),
+    external_urls: PropTypes.shape({
+      spotify: PropTypes.string,
+    }),
+  }),
+  position: PropTypes.string,
+  index: PropTypes.number,
 };
 
 export default Artist;
