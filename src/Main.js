@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Route, Switch } from "react-router";
-import Dashboard from "./routes/Dashboard";
-import TopArtists from "./routes/TopArtists";
+import Dashboard from "./routes/Dashboard/Dashboard";
+import TopArtists from "./routes/TopArtists/TopArtists";
 
 const Main = ({ accessToken }) => (
   <Switch>
@@ -13,4 +14,9 @@ const Main = ({ accessToken }) => (
     </Route>
   </Switch>
 );
+
+Main.propTypes = {
+  accessToken: PropTypes.string,
+};
+
 export default Main;

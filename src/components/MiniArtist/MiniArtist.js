@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ReactComponent as SpotifyLogo } from "../assets/spotify-logo.svg";
+import { ReactComponent as SpotifyLogo } from "../../assets/spotify-logo.svg";
 import { Container, FlexDiv, Image, LinkBtn } from "./MiniArtist.styles";
 
 const MiniArtist = ({

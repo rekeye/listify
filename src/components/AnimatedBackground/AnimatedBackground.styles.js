@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as FloatingSvg } from "../assets/floating.svg";
+import { ReactComponent as FloatingSvg } from "../../assets/floating.svg";
 
 const createCSS = (total) => {
   let styles = "";
