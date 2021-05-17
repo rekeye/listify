@@ -36,7 +36,7 @@ export const Container = styled.div`
   perspective-origin: 50% 50%;
 `;
 export const StyledFloatingSvg = styled(FloatingSvg)`
-  stroke: var(--base-light-green);
+  stroke: var(--base-light-blue);
   position: absolute;
   bottom: -100vh;
   transform-style: preserve-3d;

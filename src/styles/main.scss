@@ -1,8 +1,8 @@
 :root {
-  --base-light-blue: #67687c;
-  --base-dark-blue: #505160;
-  --base-light-green: #aebd38;
-  --base-dark-green: #598234;
+  --base-dark: #191414;
+  --base-grey: #352b2b;
+  --base-dark-blue: #1758e8;
+  --base-light-blue: #457aed;
 }
 
 * {
@@ -14,7 +14,8 @@ html {
   scroll-padding-top: 70px;
 }
 body {
-  background: var(--base-dark-blue);
+  background: var(--base-dark);
+  color: white;
 }
 h1,
 h2,
@@ -25,7 +26,6 @@ h6,
 a {
   font-family: "Cairo", sans-serif;
   font-weight: 300;
-  color: white;
 }
 h1 {
   font-size: 3.4rem;
@@ -53,4 +53,5 @@ img {
 
 a {
   text-decoration: none;
+  color: white;
 }

@@ -19,7 +19,7 @@ export const Content = styled.div`
   }
 `;
 export const LoginBtn = styled.div`
-  background: var(--base-dark-green);
+  background: var(--base-dark-blue);
   padding: 1em 1.5em;
   font-size: 1.5rem;
 `;

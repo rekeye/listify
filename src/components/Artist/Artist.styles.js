@@ -40,7 +40,7 @@ export const Info = styled.div`
 `;
 
 export const Button = styled.div`
-  background: var(--base-dark-green);
+  background: var(--base-dark-blue);
   text-align: center;
   padding: 1em 0;
   margin-top: 0.5em;

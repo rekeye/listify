@@ -24,7 +24,7 @@ export const Image = styled.img`
   }
 `;
 export const LinkBtn = styled.div`
-  background: var(--base-dark-green);
+  background: var(--base-dark-blue);
   padding: 0.5em;
   display: none;
   @media (min-width: 1024px) {

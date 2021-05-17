@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LinkBtn = styled.div`
-  background: var(--base-dark-green);
+  background: var(--base-dark-blue);
   padding: 0.5em;
   margin: 0.5em 0;
   text-align: center;
@@ -25,7 +25,7 @@ export const AboutYou = styled.figure`
   height: 8rem;
   display: flex;
   align-items: center;
-  border: 4px solid var(--base-light-blue);
+  border: 4px solid var(--base-grey);
   p {
     margin-left: 2em;
     font-size: 1.25rem;

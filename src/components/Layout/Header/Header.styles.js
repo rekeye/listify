@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  background: var(--base-light-blue);
+  background: var(--base-grey);
   padding: 0 2em;
   position: fixed;
   top: 0;
@@ -32,6 +32,7 @@ export const Hamburger = styled.button`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  outline: none;
 
   @media (min-width: 768px) {
     display: none;
@@ -72,7 +73,7 @@ export const Nav = styled.nav`
   }
 `;
 export const LinkBtn = styled.div`
-  background: var(--base-dark-green);
+  background: var(--base-dark-blue);
   padding: 0.5em 1em;
   margin: 0.85em 0.5em;
   font-size: 1.4rem;
