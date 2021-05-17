@@ -1,117 +1,86 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import SpotifyWebApi from "spotify-web-api-node";
 import { AboutYou, LinkBtn, PlaylistItems } from "./Dashboard.styles";
 import MiniArtist from "../../components/MiniArtist/MiniArtist";
 import PlaylistItem from "../../components/PlaylistItem/PlaylistItem";
 import AddNewPlaylist from "../../components/AddNewPlaylist/AddNewPlaylist";
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: "8bab01cec2de40eab277a77d78b87885",
-});
+const Dashboard = ({
+  user: { display_name: userName, images: userImgs },
+  playlists,
+  topArtistsMini,
+}) => (
+  <>
+    <section>
+      <header>
+        <h2>Logged in as:</h2>
+      </header>
 
-const Dashboard = ({ accessToken }) => {
-  const [currUser, setCurrUser] = useState({
-    display_name: "",
-    images: [{ url: "" }],
-  });
-  const [playlists, setPlaylists] = useState([]);
-  const [topArtistsMini, setTopArtistsMini] = useState([]);
+      <AboutYou>
+        <img
+          src={
+            userImgs.length > 0
+              ? userImgs[0].url
+              : "../../images/blank-profile-pic.png"
+          }
+          alt={userName}
+        />
+        <figcaption>
+          <p>{userName}</p>
+        </figcaption>
+      </AboutYou>
+    </section>
 
-  //#region api calls
-  useEffect(() => {
-    if (accessToken === null) return;
+    <section>
+      <header>
+        <h2>Your Top 3 artists:</h2>
+      </header>
 
-    spotifyApi.setAccessToken(accessToken);
+      {topArtistsMini.map((data, index) => (
+        <MiniArtist
+          data={data}
+          position={index % 2 === 0 ? "left" : "right"}
+          index={index}
+          key={data.name}
+        />
+      ))}
 
-    //user's top artists
-    spotifyApi
-      .getMyTopArtists({ limit: 3 })
-      .then(({ body: { items } }) => {
-        setTopArtistsMini(items);
-      })
-      .catch((err) => {
-        console.log("Something went wrong!", err);
-      });
+      <a href='/top-artists'>
+        <LinkBtn>Check out more</LinkBtn>
+      </a>
+    </section>
 
-    //all playlists of the user
-    spotifyApi
-      .getMe()
-      .then(({ body }) => {
-        setCurrUser(body);
-        return body.id;
-      })
-      .then((userId) => spotifyApi.getUserPlaylists(userId))
-      .then(({ body: { items } }) => setPlaylists(items))
-      .catch((err) => {
-        console.log("Something went wrong!", err);
-      });
-  }, [accessToken]);
-  //#endregion
+    <section>
+      <header>
+        <h2>Your playlists:</h2>
+      </header>
 
-  return (
-    <>
-      <section>
-        <header>
-          <h2>Logged in as:</h2>
-        </header>
-
-        <AboutYou>
-          <img
-            src={
-              currUser.images.length > 0
-                ? currUser.images[0].url
-                : "../../images/blank-profile-pic.png"
-            }
-            alt={currUser.display_name}
-          />
-          <figcaption>
-            <p>{currUser.display_name}</p>
-          </figcaption>
-        </AboutYou>
-      </section>
-
-      <section>
-        <header>
-          <h2>Your Top 3 artists:</h2>
-        </header>
-
-        {topArtistsMini.map((data, index) => (
-          <MiniArtist
-            data={data}
-            position={index % 2 === 0 ? "left" : "right"}
-            index={index}
-            key={data.name}
-          />
+      <PlaylistItems>
+        {playlists.map((data) => (
+          <PlaylistItem data={data} key={data.name} />
         ))}
-
-        <a href='/top-artists'>
-          <LinkBtn>Check out more</LinkBtn>
-        </a>
-      </section>
-
-      <section>
-        <header>
-          <h2>Your playlists:</h2>
-        </header>
-
-        <PlaylistItems>
-          {playlists.map((data) => (
-            <PlaylistItem data={data} key={data.name} />
-          ))}
-          <AddNewPlaylist />
-        </PlaylistItems>
-      </section>
-    </>
-  );
-};
+        <AddNewPlaylist />
+      </PlaylistItems>
+    </section>
+  </>
+);
 
 Dashboard.propTypes = {
-  accessToken: PropTypes.string,
+  user: PropTypes.shape({
+    userName: PropTypes.string,
+    userImgs: PropTypes.array,
+  }),
+  playlists: PropTypes.array,
+  topArtistsMini: PropTypes.array,
 };
 
 Dashboard.defaultProps = {
-  accessToken: "",
+  user: {
+    userName: "",
+    userImgs: [{ url: "" }],
+  },
+  playlists: [],
+  topArtistsMini: [],
 };
 
 export default Dashboard;
