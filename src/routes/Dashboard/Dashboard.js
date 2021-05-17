@@ -59,7 +59,9 @@ const Dashboard = ({
         {playlists.map((data) => (
           <PlaylistItem data={data} key={data.name} />
         ))}
-        <AddNewPlaylist />
+        <a href='/create-playlist'>
+          <AddNewPlaylist />
+        </a>
       </PlaylistItems>
     </section>
   </>

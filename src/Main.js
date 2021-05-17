@@ -4,6 +4,7 @@ import SpotifyWebApi from "spotify-web-api-node";
 import { Route, Switch } from "react-router";
 import Dashboard from "./routes/Dashboard/Dashboard";
 import TopArtists from "./routes/TopArtists/TopArtists";
+import PlaylistCreator from "./routes/PlaylistCreator/PlaylistCreator";
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "8bab01cec2de40eab277a77d78b87885",
@@ -61,6 +62,9 @@ const Main = ({ accessToken }) => {
       </Route>
       <Route exact path='/top-artists'>
         <TopArtists topArtists={topArtists} />
+      </Route>
+      <Route exact path='/create-playlist'>
+        <PlaylistCreator />
       </Route>
     </Switch>
   );

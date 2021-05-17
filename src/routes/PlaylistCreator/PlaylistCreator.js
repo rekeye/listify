@@ -1,9 +1,10 @@
 import React from "react";
+import CreatePlaylistForm from "../../components/CreatePlaylistForm/CreatePlaylistForm";
 
 const PlaylistCreator = () => {
   return (
     <>
-      <form></form>
+      <CreatePlaylistForm></CreatePlaylistForm>
       <section></section>
     </>
   );
