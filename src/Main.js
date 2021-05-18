@@ -64,7 +64,7 @@ const Main = ({ accessToken }) => {
         <TopArtists topArtists={topArtists} />
       </Route>
       <Route exact path='/create-playlist'>
-        <PlaylistCreator />
+        <PlaylistCreator topArtists={topArtists} />
       </Route>
     </Switch>
   );
