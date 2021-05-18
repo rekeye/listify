@@ -41,7 +41,9 @@ h3 {
 h4 {
   font-size: 1.6rem;
 }
-p {
+p,
+label,
+button {
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   color: white;
@@ -51,8 +53,7 @@ img {
   max-height: 100%;
 }
 
-a,
-button {
+a {
   color: white;
 }
 

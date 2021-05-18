@@ -33,7 +33,6 @@ export const Image = styled.img`
     width: auto;
   }
 `;
-
 //snached from https://codepen.io/aaroniker/pen/abzgWEx
 export const Checkbox = styled(FormikCheckbox)`
   --primary: var(--base-light-blue);
