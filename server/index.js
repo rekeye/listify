@@ -15,6 +15,8 @@ app.use(express.static(buildPath));
 app.use(cors());
 app.use(express.json());
 
+app.options("*", cors());
+
 //#region login authorization api
 app.post("/login", (req, res) => {
   const code = req.body.code;

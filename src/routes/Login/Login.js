@@ -6,7 +6,7 @@ import AnimatedBackground from "../../components/AnimatedBackground/AnimatedBack
 const REDIRECT_URL = window.location.href;
 const CLIENT_ID = "8bab01cec2de40eab277a77d78b87885";
 const scopes =
-  "user-read-email user-read-private user-top-read user-follow-read";
+  "user-read-email user-read-private user-top-read user-follow-read playlist-modify-public ugc-image-upload";
 
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URL}&scope=${encodeURIComponent(
   scopes

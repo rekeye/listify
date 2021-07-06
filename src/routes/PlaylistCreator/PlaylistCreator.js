@@ -1,26 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import SelectSongsForm from "../../components/Forms/SelectSongsForm/SelectSongsForm";
-import CreatePlaylistForm from "../../components/Forms/CreatePlaylistForm/CreatePlaylistForm";
+import CreatePlaylistForm from "../../components/CreatePlaylistForm/CreatePlaylistForm";
 
-const PlaylistCreator = ({ topArtists }) => {
-  const [chosenSeeds, setChosenSeeds] = useState();
-  const [showSelect, setShowSelect] = useState(true);
-
-  return (
-    <>
-      {chosenSeeds && !showSelect ? (
-        <CreatePlaylistForm setShowSelect={setShowSelect} />
-      ) : (
-        <SelectSongsForm
-          artists={topArtists}
-          setChosenSeeds={setChosenSeeds}
-          setShowSelect={setShowSelect}
-        />
-      )}
-    </>
-  );
-};
+const PlaylistCreator = ({ topArtists, client }) => (
+  <>
+    <CreatePlaylistForm client={client} artists={topArtists} />
+  </>
+);
 
 PlaylistCreator.propTypes = {
   topArtists: PropTypes.arrayOf(PropTypes.object),
