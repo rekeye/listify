@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const SpotifyWebApi = require("spotify-web-api-node");
-
 //env variables
 require("dotenv").config({ path: "../.env" });
 
@@ -12,10 +11,19 @@ const PORT = process.env.PORT || 3001;
 const buildPath = path.join(__dirname, "..", "build");
 app.use(express.static(buildPath));
 
-app.use(cors());
+const whitelist = [
+  "http://localhost:3001/",
+  "https://spotify-listify.herokuapp.com:3001",
+];
+const corsOptions = {
+  origin: (origin, callback) => {
+    whitelist.indexOf(origin) !== -1
+      ? callback(null, true)
+      : callback(new Error("Not allowed by CORS"));
+  },
+};
+app.use(cors(corsOptions));
 app.use(express.json());
-
-app.options("*", cors());
 
 //#region login authorization api
 app.post("/login", (req, res) => {
@@ -23,19 +31,19 @@ app.post("/login", (req, res) => {
 
   const spotifyApi = new SpotifyWebApi({
     redirectUri: process.env.REDIRECT_URI,
-    clientId: "8bab01cec2de40eab277a77d78b87885",
+    clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
   });
 
   spotifyApi
     .authorizationCodeGrant(code)
-    .then((data) => {
+    .then((data) =>
       res.json({
         accessToken: data.body["access_token"],
         refreshToken: data.body["refresh_token"],
         expiresIn: data.body["expires_in"],
-      });
-    })
+      })
+    )
     .catch((err) => {
       console.log(err);
       res.sendStatus(400);
@@ -47,24 +55,52 @@ app.post("/login", (req, res) => {
 app.post("/refresh", (req, res) => {
   const spotifyApi = new SpotifyWebApi({
     redirectUri: process.env.REDIRECT_URI,
-    clientId: "8bab01cec2de40eab277a77d78b87885",
+    clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     refreshToken: req.body.refreshToken,
   });
 
   spotifyApi
     .refreshAccessToken()
-    .then((data) => {
-      //send response to the client
+    .then((data) =>
       res.json({
         accessToken: data.body["access_token"],
         expiresIn: data.body["expires_in"],
-      });
-    })
+      })
+    )
     .catch((err) => {
       console.log(err);
       res.sendStatus(400);
     });
+});
+//#endregion
+
+//#region create playlist api
+const base64 = require("../src/images/listify-icon-base64.json").file.data; //base64 img playlist icon for create playlist api
+
+app.post("/create-playlist-api", cors(), async (req, res) => {
+  const spotifyApi = new SpotifyWebApi({
+    clientId: process.env.CLIENT_ID,
+    accessToken: req.body.accessToken,
+  });
+
+  const id = await spotifyApi
+    .createPlaylist(req.body.name, { description: req.body.desc })
+    .then(({ body: { id } }) => id)
+    .catch((err) => console.log("Something went wrong!", err));
+
+  spotifyApi
+    .getRecommendations({
+      seed_artists: req.body.artists,
+      limit: 50,
+    })
+    .then(({ body: { tracks } }) => {
+      const trackUris = tracks.map((track) => track.uri);
+      return spotifyApi.addTracksToPlaylist(id, trackUris);
+    })
+    .then(() => spotifyApi.uploadCustomPlaylistCoverImage(id, base64))
+    .then(() => res.json("Playlist created!"))
+    .catch((err) => console.log("Something went wrong!", err));
 });
 //#endregion
 

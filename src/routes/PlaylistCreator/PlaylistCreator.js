@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import CreatePlaylistForm from "../../components/CreatePlaylistForm/CreatePlaylistForm";
 
-const PlaylistCreator = ({ topArtists, client }) => (
+const PlaylistCreator = ({ accessToken, topArtists }) => (
   <>
-    <CreatePlaylistForm client={client} artists={topArtists} />
+    <CreatePlaylistForm accessToken={accessToken} topArtists={topArtists} />
   </>
 );
 

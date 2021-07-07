@@ -7,7 +7,7 @@ import TopArtists from "./routes/TopArtists/TopArtists";
 import PlaylistCreator from "./routes/PlaylistCreator/PlaylistCreator";
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: "8bab01cec2de40eab277a77d78b87885",
+  clientId: process.env.CLIENT_ID,
 });
 
 const Main = ({ accessToken }) => {
@@ -64,7 +64,7 @@ const Main = ({ accessToken }) => {
         <TopArtists topArtists={topArtists} />
       </Route>
       <Route exact path='/create-playlist'>
-        <PlaylistCreator topArtists={topArtists} client={spotifyApi} />
+        <PlaylistCreator accessToken={accessToken} topArtists={topArtists} />
       </Route>
     </Switch>
   );
