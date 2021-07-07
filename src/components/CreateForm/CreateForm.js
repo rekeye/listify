@@ -10,22 +10,22 @@ import {
   Btn,
   Checkbox,
   Grid,
-} from "./CreatePlaylistForm.styles";
+} from "./CreateForm.styles";
 
 const validateName = (value) => (!value ? "Required!" : "");
-const CreatePlaylistForm = ({ accessToken, topArtists }) => (
+const CreateForm = ({ accessToken, topArtists }) => (
   <Formik
     initialValues={{
       name: "",
       desc: "",
       artists: [],
     }}
-    onSubmit={({ name, desc, artists }) =>
-      axios
+    onSubmit={({ name, desc, artists }) => {
+      return axios
         .post("/create-playlist-api", { accessToken, name, desc, artists })
         .then((res) => console.log(res.data))
-        .catch((err) => console.log("Something went wrong!", err))
-    }>
+        .catch((err) => console.log("Something went wrong!", err));
+    }}>
     {() => (
       <Form>
         <label htmlFor='name'>
@@ -72,9 +72,9 @@ const CreatePlaylistForm = ({ accessToken, topArtists }) => (
   </Formik>
 );
 
-CreatePlaylistForm.propTypes = {
+CreateForm.propTypes = {
   artists: PropTypes.array,
   client: PropTypes.object,
 };
 
-export default CreatePlaylistForm;
+export default CreateForm;
