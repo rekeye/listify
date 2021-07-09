@@ -46,6 +46,7 @@ export const Container = styled.label`
     background: var(--base-grey);
   }
   @media (max-width: 768px) {
+    padding: 0.5em;
     h3 {
       font-size: 1.5rem;
     }
@@ -54,7 +55,7 @@ export const Container = styled.label`
 export const Image = styled.img`
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 2em;
+  margin-right: 1em;
   width: 6em;
   height: 6em;
   @media (min-width: 768px) {
@@ -65,7 +66,7 @@ export const Image = styled.img`
 //#region checkbox snached from https://codepen.io/aaroniker/pen/abzgWEx
 export const Checkbox = styled(FormikCheckbox)`
   --primary: var(--base-light-blue);
-  --secondary: white;
+  --secondary: var(--base-grey);
   --duration: 0.5s;
   appearance: none;
   outline: none;
@@ -77,7 +78,7 @@ export const Checkbox = styled(FormikCheckbox)`
   border-radius: 50%;
   width: 36px;
   height: 36px;
-  border: 4px solid var(--primary);
+  border: 2px solid var(--primary);
   background-size: 300% 300%;
   transition: transform 0.3s;
   transform: scale(var(--scale, 1)) translateZ(0);
@@ -88,8 +89,8 @@ export const Checkbox = styled(FormikCheckbox)`
     position: absolute;
     width: 16px;
     height: var(--height, 16px);
-    left: 6px;
-    top: var(--top, 6px);
+    left: 7.5px;
+    top: var(--top, 8px);
     background: var(--background, var(--primary));
     animation: var(--name-icon-b, var(--name-icon, unchecked-icon))
       var(--duration) ease forwards;
@@ -112,7 +113,7 @@ export const Checkbox = styled(FormikCheckbox)`
   }
   &:after {
     --height: 4px;
-    --top: 12px;
+    --top: 14px;
     --background: var(--secondary);
     --name-icon-b: var(--name-icon-a, checked-icon);
   }

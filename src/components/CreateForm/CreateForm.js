@@ -14,7 +14,7 @@ import {
 } from "./CreateForm.styles";
 
 const validateName = (value) => (!value ? "Required!" : "");
-const CreateForm = ({ accessToken, topArtists }) => (
+const CreateForm = ({ accessToken, topArtists, setPlaylistName }) => (
   <Formik
     initialValues={{
       name: "",
@@ -22,6 +22,7 @@ const CreateForm = ({ accessToken, topArtists }) => (
       artists: [],
     }}
     onSubmit={({ name, desc, artists }) => {
+      setPlaylistName(name);
       return axios
         .post("/create-playlist-api", { accessToken, name, desc, artists })
         .then((res) => console.log(res.data))
@@ -79,6 +80,7 @@ const CreateForm = ({ accessToken, topArtists }) => (
 CreateForm.propTypes = {
   artists: PropTypes.array,
   client: PropTypes.object,
+  setIsSubmitted: PropTypes.func,
 };
 
 export default CreateForm;

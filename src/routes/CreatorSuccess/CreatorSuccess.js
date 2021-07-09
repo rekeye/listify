@@ -1,7 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CreatorSuccess = () => <></>;
+const CreatorSuccess = ({
+  location: {
+    state: { name },
+  },
+}) => (
+  <>
+    <img src='../../images/listify-icon.jpg' />
+    {name}
+  </>
+);
 
 CreatorSuccess.propTypes = {
   topArtists: PropTypes.arrayOf(PropTypes.object),
