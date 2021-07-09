@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.header`
   background: var(--base-grey);
   padding: 0 2em;
-  position: fixed;
+  position: sticky;
   top: 0;
   right: 0;
   width: 100%;
@@ -74,7 +74,7 @@ export const Nav = styled.nav`
 `;
 export const LinkBtn = styled.div`
   background: var(--base-dark-blue);
-  padding: 0.5em 1em;
-  margin: 0.85em 0.5em;
+  padding: 0.3em 1em;
+  margin: 0.5em;
   font-size: 1.4rem;
 `;

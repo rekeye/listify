@@ -11,7 +11,7 @@ const MiniArtist = ({
   },
   index,
 }) => (
-  <a href={href}>
+  <a href={href} target='_blank'>
     <Container>
       <FlexDiv>
         <Image src={images[2].url} alt={name} />

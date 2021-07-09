@@ -10,7 +10,7 @@ export const Container = styled.article`
 `;
 
 export const FlexColumn = styled.a`
-  width: ${({ width }) => width}px;
+  width: ${({ width }) => width - 80}px;
   display: flex;
   flex-direction: column;
 `;

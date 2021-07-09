@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { AboutYou, LinkBtn, PlaylistItems } from "./Dashboard.styles";
 import MiniArtist from "../../components/MiniArtist/MiniArtist";
 import PlaylistItem from "../../components/PlaylistItem/PlaylistItem";
@@ -45,9 +46,9 @@ const Dashboard = ({
         />
       ))}
 
-      <a href='/top-artists'>
+      <Link to='/top-artists'>
         <LinkBtn>Check out more</LinkBtn>
-      </a>
+      </Link>
     </section>
 
     <section>
@@ -59,9 +60,9 @@ const Dashboard = ({
         {playlists.map((data) => (
           <PlaylistItem data={data} key={data.name} />
         ))}
-        <a href='/create'>
+        <Link to='/create'>
           <AddNewPlaylist />
-        </a>
+        </Link>
       </PlaylistItems>
     </section>
   </>

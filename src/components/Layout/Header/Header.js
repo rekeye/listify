@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import getCurrentRelativeURL from "../../../hooks/getCurrentRelativePath";
 import { Container, FlexDiv, Hamburger, Nav, LinkBtn } from "./Header.styles";
 
@@ -10,9 +11,9 @@ const Header = () => {
   return (
     <Container>
       <FlexDiv>
-        <a href='/'>
+        <Link to='/'>
           <h1>Listify</h1>
-        </a>
+        </Link>
         <Hamburger open={nav} onClick={() => setNav(!nav)}>
           <div />
           <div />
@@ -22,13 +23,13 @@ const Header = () => {
 
       <Nav open={nav}>
         {currRelativeURL !== "/" && (
-          <a href='/'>
+          <Link to='/'>
             <LinkBtn>Go back to Dashboard</LinkBtn>
-          </a>
+          </Link>
         )}
-        <a href='/' onClick={() => sessionStorage.removeItem("accessToken")}>
+        <Link to='/' onClick={() => sessionStorage.removeItem("accessToken")}>
           <LinkBtn>Log out</LinkBtn>
-        </a>
+        </Link>
       </Nav>
     </Container>
   );

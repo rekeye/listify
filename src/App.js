@@ -1,10 +1,11 @@
 import React from "react";
-import { Container } from "./App.styles";
+import useAuth from "./hooks/useAuth";
+import ScrollToTop from "./components/ScrollToTop";
 import Header from "./components/Layout/Header/Header";
 import Footer from "./components/Layout/Footer";
 import Login from "./routes/Login/Login";
 import Main from "./Main";
-import useAuth from "./hooks/useAuth";
+import { Container } from "./App.styles";
 
 const App = () => {
   const code = new URLSearchParams(window.location.search).get("code");
@@ -13,6 +14,7 @@ const App = () => {
 
   return accessToken ? (
     <>
+      <ScrollToTop />
       <Header />
       <Container>
         <Main accessToken={accessToken} />

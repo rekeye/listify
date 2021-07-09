@@ -4,7 +4,10 @@ import CreateForm from "../../components/CreateForm/CreateForm";
 
 const Creator = ({ accessToken, topArtists }) => (
   <>
-    <CreateForm accessToken={accessToken} topArtists={topArtists} />
+    <CreateForm
+      accessToken={accessToken}
+      topArtists={topArtists}
+    />
   </>
 );
 

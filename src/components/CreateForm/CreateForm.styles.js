@@ -2,12 +2,33 @@ import styled from "styled-components";
 import FormikCheckbox from "./FormikCheckbox";
 import FormikField from "./FormikField";
 
+export const TextFieldContainer = styled.div`
+  @media (min-width: 868px) {
+    width: 50%;
+  }
+`;
+export const TextField = styled(FormikField)`
+  width: 100%;
+  padding: 0.75em;
+  font-size: 1.075rem;
+  background: transparent;
+  border: none;
+  color: white;
+  border-bottom: 2px solid var(--base-dark-blue);
+  &:hover,
+  &:focus {
+    background: var(--base-grey);
+  }
+`;
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.5em;
-  @media (min-width: 1258px) {
+  @media (min-width: 868px) {
     grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1258px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 export const Container = styled.label`
@@ -30,25 +51,18 @@ export const Container = styled.label`
     }
   }
 `;
-export const TextField = styled(FormikField)`
-  width: 100%;
-  padding: 0.75em;
-  margin: 0.75em;
-  font-size: 1.125rem;
-  background: rgba(60, 60, 60, 0.2);
-  border: none;
-  color: white;
-  border-bottom: 2px solid var(--base-dark-blue);
-`;
 export const Image = styled.img`
-  margin-right: 0.5em;
-  width: 25%;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 2em;
+  width: 6em;
+  height: 6em;
   @media (min-width: 768px) {
     margin-right: 2em;
-    width: auto;
   }
 `;
-//snached from https://codepen.io/aaroniker/pen/abzgWEx
+
+//#region checkbox snached from https://codepen.io/aaroniker/pen/abzgWEx
 export const Checkbox = styled(FormikCheckbox)`
   --primary: var(--base-light-blue);
   --secondary: white;
@@ -175,6 +189,8 @@ export const Checkbox = styled(FormikCheckbox)`
     }
   }
 `;
+//#endregion
+
 export const FlexEnd = styled.div`
   display: flex;
   justify-content: flex-end;

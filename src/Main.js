@@ -28,7 +28,7 @@ const Main = ({ accessToken }) => {
 
     //user's top artists
     spotifyApi
-      .getMyTopArtists({ limit: 20 })
+      .getMyTopArtists({ limit: 24 })
       .then(({ body: { items } }) => {
         setTopArtists(items);
         setTopArtistsMini(items.slice(0, 3));
@@ -62,7 +62,7 @@ const Main = ({ accessToken }) => {
         />
       </Route>
       <Route exact path='/top-artists'>
-        <TopArtists topArtists={topArtists} />
+        <TopArtists topArtists={topArtists.slice(0, 10)} />
       </Route>
       <Route exact path='/create'>
         <Creator accessToken={accessToken} topArtists={topArtists} />
