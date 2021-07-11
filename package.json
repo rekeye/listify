@@ -39,7 +39,7 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
-    "@mapbox/node-pre-gyp": "0.12.0",
+    "@mapbox/node-pre-gyp": "1.0.5",
     "jest": "^20.0.4"
   }
 }
