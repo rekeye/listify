@@ -12,8 +12,8 @@ const buildPath = path.join(__dirname, "..", "build");
 app.use(express.static(buildPath));
 
 const whitelist = [
-  "http://localhost:3001/",
-  "https://spotify-listify.herokuapp.com:3001",
+  `http://localhost:${PORT}/`,
+  `https://spotify-listify.herokuapp.com:${PORT}`,
 ];
 const corsOptions = {
   origin: (origin, callback) => {
