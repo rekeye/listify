@@ -13,18 +13,7 @@ console.log(PORT);
 const buildPath = path.join(__dirname, "..", "build");
 app.use(express.static(buildPath));
 
-const whitelist = [
-  `http://localhost:${PORT}/`,
-  `https://spotify-listify.herokuapp.com:${PORT}`,
-];
-const corsOptions = {
-  origin: (origin, callback) => {
-    whitelist.indexOf(origin) !== -1
-      ? callback(null, true)
-      : callback(new Error("Not allowed by CORS"));
-  },
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 //#region login authorization api
@@ -36,8 +25,6 @@ app.post("/login", (req, res) => {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
   });
-
-  console.log("hello");
 
   spotifyApi
     .authorizationCodeGrant(code)
