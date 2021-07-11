@@ -8,4 +8,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background: var(--base-grey);
+  &:hover {
+    background: var(--base-dark-blue);
+  }
 `;

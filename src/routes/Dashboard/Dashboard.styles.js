@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const LinkBtn = styled.div`
   background: var(--base-dark-blue);
-  padding: 0.5em;
+  padding: 0.25em;
   margin: 0.5em 0;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 `;
 export const PlaylistItems = styled.div`
   display: grid;

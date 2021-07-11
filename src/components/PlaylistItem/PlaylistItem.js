@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import icon from "../../images/listify-icon.jpg";
 import { Container, Button } from "./PlaylistItem.styles";
 
 const PlaylistItem = ({
@@ -10,9 +11,9 @@ const PlaylistItem = ({
   },
 }) => {
   return (
-    <a href={spotify}>
+    <a href={spotify} target='_blank'>
       <Container>
-        <img src={images[0].url} alt={name} />
+        <img src={images.length > 0 ? images[0].url : icon} alt={name} />
         <figcaption>
           <h3>{name}</h3>
           <Button>

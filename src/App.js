@@ -9,7 +9,9 @@ import { Container } from "./App.styles";
 
 const App = () => {
   const code = new URLSearchParams(window.location.search).get("code");
-  const accessToken = useAuth(code) || sessionStorage.getItem("accessToken");
+  const accessToken = sessionStorage.getItem("accessToken")
+    ? useAuth(code)
+    : sessionStorage.getItem("accessToken");
   sessionStorage.setItem("accessToken", accessToken);
 
   return accessToken ? (

@@ -89,7 +89,7 @@ export const Checkbox = styled(FormikCheckbox)`
     position: absolute;
     width: 16px;
     height: var(--height, 16px);
-    left: 7.5px;
+    left: 8px;
     top: var(--top, 8px);
     background: var(--background, var(--primary));
     animation: var(--name-icon-b, var(--name-icon, unchecked-icon))

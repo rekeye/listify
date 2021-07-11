@@ -18,7 +18,7 @@ const Main = ({ accessToken }) => {
   });
   const [playlists, setPlaylists] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
-  const [topArtistsMini, setTopArtistsMini] = useState([]);
+  //console.log(playlists);
 
   //#region api calls
   useEffect(() => {
@@ -29,13 +29,8 @@ const Main = ({ accessToken }) => {
     //user's top artists
     spotifyApi
       .getMyTopArtists({ limit: 24 })
-      .then(({ body: { items } }) => {
-        setTopArtists(items);
-        setTopArtistsMini(items.slice(0, 3));
-      })
-      .catch((err) => {
-        console.log("Something went wrong!", err);
-      });
+      .then(({ body: { items } }) => setTopArtists(items))
+      .catch((err) => console.log("Something went wrong!", err));
 
     //all playlists of the user
     spotifyApi
@@ -46,9 +41,7 @@ const Main = ({ accessToken }) => {
       })
       .then((userId) => spotifyApi.getUserPlaylists(userId))
       .then(({ body: { items } }) => setPlaylists(items))
-      .catch((err) => {
-        console.log("Something went wrong!", err);
-      });
+      .catch((err) => console.log("Something went wrong!", err));
   }, [accessToken]);
   //#endregion
 
@@ -58,7 +51,7 @@ const Main = ({ accessToken }) => {
         <Dashboard
           user={user}
           playlists={playlists}
-          topArtistsMini={topArtistsMini}
+          topArtistsMini={topArtists.slice(0, 3)}
         />
       </Route>
       <Route exact path='/top-artists'>
@@ -67,9 +60,11 @@ const Main = ({ accessToken }) => {
       <Route exact path='/create'>
         <Creator accessToken={accessToken} topArtists={topArtists} />
       </Route>
-      <Route exact path='/create-success'>
-        <CreatorSuccess accessToken={accessToken} topArtists={topArtists} />
-      </Route>
+      <Route
+        exact
+        path='/create-success'
+        render={(props) => <CreatorSuccess {...props} />}
+      />
     </Switch>
   );
 };

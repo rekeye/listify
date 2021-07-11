@@ -4,18 +4,19 @@ export const Container = styled.article`
   display: flex;
   flex-direction: ${({ position }) =>
     position === "left" ? "row" : "row-reverse"};
-  margin-bottom: 2em;
+  margin: -2em 0;
   text-align: ${({ position }) => position};
   overflow: hidden;
 `;
 
 export const FlexColumn = styled.a`
-  width: ${({ width }) => width - 80}px;
+  width: ${({ width }) => width - 120}px;
   display: flex;
   flex-direction: column;
 `;
 
 export const Image = styled.img`
+  overflow: hidden;
   transition: all 0.75s linear;
   ${({ inView }) =>
     inView
@@ -42,9 +43,9 @@ export const Info = styled.div`
 export const Button = styled.div`
   background: var(--base-dark-blue);
   text-align: center;
-  padding: 1em 0;
+  padding: 0.75em 0;
   margin-top: 0.5em;
   p {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 `;
