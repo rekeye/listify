@@ -34,6 +34,21 @@ const Dashboard = ({
 
     <section>
       <header>
+        <h2>Your playlists:</h2>
+      </header>
+
+      <PlaylistItems>
+        {playlists.map((data) => (
+          <PlaylistItem data={data} key={data.name} />
+        ))}
+        <Link to='/create'>
+          <AddNewPlaylist />
+        </Link>
+      </PlaylistItems>
+    </section>
+
+    <section>
+      <header>
         <h2>Your Top 3 artists:</h2>
       </header>
 
@@ -49,21 +64,6 @@ const Dashboard = ({
       <Link to='/top-artists'>
         <LinkBtn>Check out more</LinkBtn>
       </Link>
-    </section>
-
-    <section>
-      <header>
-        <h2>Your playlists:</h2>
-      </header>
-
-      <PlaylistItems>
-        {playlists.map((data) => (
-          <PlaylistItem data={data} key={data.name} />
-        ))}
-        <Link to='/create'>
-          <AddNewPlaylist />
-        </Link>
-      </PlaylistItems>
     </section>
   </>
 );

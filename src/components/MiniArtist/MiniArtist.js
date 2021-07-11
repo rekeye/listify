@@ -7,6 +7,7 @@ const MiniArtist = ({
   data: {
     images,
     name,
+    followers: { total: follows },
     external_urls: { spotify: href },
   },
   index,
@@ -15,7 +16,10 @@ const MiniArtist = ({
     <Container>
       <FlexDiv>
         <Image src={images[2].url} alt={name} />
-        <h3>{`${index + 1}. ${name}`}</h3>
+        <div>
+          <h3>{`${index + 1}. ${name}`}</h3>
+          <p>Followers: {follows}</p>
+        </div>
       </FlexDiv>
       <LinkBtn>
         <SpotifyLogo />

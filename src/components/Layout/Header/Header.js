@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import getCurrentRelativeURL from "../../../hooks/getCurrentRelativePath";
+import { Link, useLocation } from "react-router-dom";
 import { Container, FlexDiv, Hamburger, Nav, LinkBtn } from "./Header.styles";
 
 const Header = () => {
   const [nav, setNav] = useState(false);
 
-  const currRelativeURL = getCurrentRelativeURL();
+  const location = useLocation();
 
   return (
     <Container>
@@ -22,7 +21,7 @@ const Header = () => {
       </FlexDiv>
 
       <Nav open={nav}>
-        {currRelativeURL !== "/" && (
+        {location.pathname !== "/" && (
           <Link to='/'>
             <LinkBtn>Go back to Dashboard</LinkBtn>
           </Link>

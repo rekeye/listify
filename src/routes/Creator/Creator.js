@@ -4,21 +4,21 @@ import PropTypes from "prop-types";
 import CreateForm from "../../components/CreateForm/CreateForm";
 
 const Creator = ({ accessToken, topArtists }) => {
-  const [playlistName, setPlaylistName] = useState("");
+  const [playlistInfo, setPlaylistInfo] = useState("");
   return (
     <>
-      {playlistName ? (
+      {playlistInfo ? (
         <Redirect
           to={{
             pathname: "/create-success",
-            state: { name: playlistName },
+            state: { playlistInfo: playlistInfo },
           }}
         />
       ) : (
         <CreateForm
           accessToken={accessToken}
           topArtists={topArtists}
-          setPlaylistName={setPlaylistName}
+          setPlaylistInfo={setPlaylistInfo}
         />
       )}
     </>

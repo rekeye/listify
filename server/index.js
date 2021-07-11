@@ -84,9 +84,9 @@ app.post("/create-playlist-api", cors(), async (req, res) => {
     accessToken: req.body.accessToken,
   });
 
-  const id = await spotifyApi
+  const playlist = await spotifyApi
     .createPlaylist(req.body.name, { description: req.body.desc })
-    .then(({ body: { id } }) => id)
+    .then(({ body }) => body)
     .catch((err) => console.log("Something went wrong!", err));
 
   spotifyApi
@@ -96,11 +96,14 @@ app.post("/create-playlist-api", cors(), async (req, res) => {
     })
     .then(({ body: { tracks } }) => {
       const trackUris = tracks.map((track) => track.uri);
-      return spotifyApi.addTracksToPlaylist(id, trackUris);
+      return spotifyApi.addTracksToPlaylist(playlist.id, trackUris);
     })
-    .then(() => spotifyApi.uploadCustomPlaylistCoverImage(id, base64))
-    .then(() => res.json("Playlist created!"))
-    .catch((err) => console.log("Something went wrong!", err));
+    .then(() => spotifyApi.uploadCustomPlaylistCoverImage(playlist.id, base64))
+    .then(() => res.json({ info: playlist, status: "Playlist created!" }))
+    .catch((err) => {
+      console.log("Something went wrong!", err);
+      res.sendStatus(400);
+    });
 });
 //#endregion
 
