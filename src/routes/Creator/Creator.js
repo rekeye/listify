@@ -6,7 +6,7 @@ import CreateForm from "../../components/CreateForm/CreateForm";
 const Creator = ({ accessToken, topArtists }) => {
   const [playlistInfo, setPlaylistInfo] = useState("");
   return (
-    <>
+    <React.Fragment>
       {playlistInfo ? (
         <Redirect
           to={{
@@ -21,7 +21,7 @@ const Creator = ({ accessToken, topArtists }) => {
           setPlaylistInfo={setPlaylistInfo}
         />
       )}
-    </>
+    </React.Fragment>
   );
 };
 

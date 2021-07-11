@@ -11,7 +11,7 @@ const Dashboard = ({
   playlists,
   topArtistsMini,
 }) => (
-  <>
+  <React.Fragment>
     <section>
       <header>
         <h2>Logged in as:</h2>
@@ -65,7 +65,7 @@ const Dashboard = ({
         <LinkBtn>Check out more</LinkBtn>
       </Link>
     </section>
-  </>
+  </React.Fragment>
 );
 
 Dashboard.propTypes = {

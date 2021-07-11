@@ -24,7 +24,7 @@ const CreatorSuccess = ({
   },
 }) => {
   return (
-    <>
+    <React.Fragment>
       <Gradient />
       <Container>
         <h2>Great, your playlist has been created!</h2>
@@ -40,7 +40,7 @@ const CreatorSuccess = ({
           </Link>
         </FlexDiv>
       </Container>
-    </>
+    </React.Fragment>
   );
 };
 

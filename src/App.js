@@ -15,14 +15,14 @@ const App = () => {
   sessionStorage.setItem("accessToken", accessToken);
 
   return accessToken ? (
-    <>
+    <React.Fragment>
       <ScrollToTop />
       <Header />
       <Container>
         <Main accessToken={accessToken} />
       </Container>
       <Footer />
-    </>
+    </React.Fragment>
   ) : (
     <Login />
   ); //if code have been returned from authorization render Dashboard otherwise Login
