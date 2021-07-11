@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mapbox/node-pre-gyp": "^1.0.5",
     "@n8tb1t/use-scroll-position": "^2.0.3",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -38,7 +39,7 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
-    "jest": "^20.0.4",
-    "node-pre-gyp": "0.12.0"
+    "@mapbox/node-pre-gyp": "0.12.0",
+    "jest": "^20.0.4"
   }
 }
