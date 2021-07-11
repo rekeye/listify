@@ -38,6 +38,7 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
-    "jest": "^20.0.4"
+    "jest": "^20.0.4",
+    "node-pre-gyp": "0.12.0"
   }
 }
