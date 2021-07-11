@@ -36,5 +36,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@mapbox/node-pre-gyp": "1.0.5"
+  }
 }
