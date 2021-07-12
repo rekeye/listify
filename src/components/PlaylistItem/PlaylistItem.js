@@ -11,7 +11,7 @@ const PlaylistItem = ({
   },
 }) => {
   return (
-    <a href={spotify} target='_blank'>
+    <a href={spotify} target='_blank' rel='noopener noreferrer'>
       <Container>
         <img src={images.length > 0 ? images[0].url : icon} alt={name} />
         <figcaption>

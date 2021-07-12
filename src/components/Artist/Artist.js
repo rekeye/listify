@@ -40,7 +40,11 @@ const Artist = ({
 
   return (
     <Container position={position} ref={elementRef}>
-      <FlexColumn width={image.width} href={href} target='_blank'>
+      <FlexColumn
+        width={image.width}
+        href={href}
+        target='_blank'
+        rel='noopener noreferrer'>
         <Image src={image.url} alt={name} position={position} inView={inView} />
         <Info>
           <h3>{`${index + 1}. ${name}`}</h3>
