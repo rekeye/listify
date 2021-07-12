@@ -3,8 +3,13 @@ import FormikCheckbox from "./FormikCheckbox";
 import FormikField from "./FormikField";
 
 export const TextFieldContainer = styled.div`
-  @media (min-width: 868px) {
-    width: 50%;
+  margin: 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  div {
+    flex-grow: 1;
+    min-width: 20em;
   }
 `;
 export const TextField = styled(FormikField)`
