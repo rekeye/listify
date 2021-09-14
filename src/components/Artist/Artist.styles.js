@@ -4,9 +4,15 @@ export const Container = styled.article`
   display: flex;
   flex-direction: ${({ position }) =>
     position === "left" ? "row" : "row-reverse"};
-  margin: -2em 0;
+  margin: 0.5em 0;
   text-align: ${({ position }) => position};
   overflow: hidden;
+  @media (min-width: 768px) {
+    margin: -2em 0;
+  }
+  @media (min-width: 368px) {
+    margin: 0;
+  }
 `;
 
 export const FlexColumn = styled.a`

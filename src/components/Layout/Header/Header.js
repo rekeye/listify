@@ -23,7 +23,7 @@ const Header = () => {
       <Nav open={nav}>
         {location.pathname !== "/" && (
           <Link to='/'>
-            <LinkBtn>Go back to Dashboard</LinkBtn>
+            <LinkBtn>Home</LinkBtn>
           </Link>
         )}
         <Link to='/' onClick={() => sessionStorage.removeItem("accessToken")}>
