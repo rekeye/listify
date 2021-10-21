@@ -1,6 +1,7 @@
 # Listify
 
-[![Website status](https://img.shields.io/website?url=https%3A%2F%2Fspotify-listify.herokuapp.com%2F)](https://spotify-listify.herokuapp.com/)
+![Website status](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fspotify-listify.herokuapp.com%2F)
+![Last commit](https://img.shields.io/github/last-commit/rekeye/listify)
 
 This is a spotify api app giving the user music recomendations based on their listening taste
 
